@@ -1,5 +1,7 @@
 module Prime ( primes ) where
 
+import Euler 
+
 data Wheel = Wheel Integer [Integer]
 
 roll (Wheel sz pts) = [sz * k + r| k <- [0..], r <- pts]
