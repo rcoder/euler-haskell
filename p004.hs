@@ -3,30 +3,25 @@
 
 import Data.List
 
-splitInCenter :: String -> (String, String)
-splitInCenter s = (take preLen s, drop sufLen s)
-  where preLen = (length s) `div` 2
-        sufLen = if (even $ length s) then preLen else preLen + 1
-
 isPalindrome :: Integer -> Bool
-isPalindrome n = fstPart == reverse (sndPart)
-  where fstPart = fst pieces
-        sndPart = snd pieces
-        pieces = splitInCenter (show n)
+isPalindrome n = (show n) == reverse (show n)
 
 threeDigitNumbers = [100..999]
 desc3DigitNumbers = reverse threeDigitNumbers
 
-pairs :: a -> [a] -> [(a,a)]
-pairs i xs = [(i,i)] ++ map (\xi -> (i,xi)) xs
+pairs :: [a] -> [(a,a)]
+pairs []      = []
+pairs (x:xs)  = [(x,x)] ++ (map (\i -> (x,i)) xs) ++ pairs xs
 
-operands = concat $ map (\e -> pairs e desc3DigitNumbers) desc3DigitNumbers
+operands = pairs desc3DigitNumbers
 
 multT :: (Integer, Integer) -> Integer
 multT t = (fst t) * (snd t)
 
-allPalindromes = map (multT) $ filter (\p -> isPalindrome (multT p)) operands
-result = maximum allPalindromes
+products = map (multT) operands
+
+palindromes = filter (isPalindrome) products
+result = maximum palindromes 
 
 main = do
  putStrLn $ "value: " ++ (show result)
