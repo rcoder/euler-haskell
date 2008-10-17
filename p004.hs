@@ -30,5 +30,5 @@ result = maximum allPalindromes
 
 main = do
  putStrLn $ "value: " ++ (show result)
--- putStrLn $ "operands: " ++ (show operands)
+-- putStrLn $ "num. palindromes: " ++ (show $ length allPalindromes)
 
