@@ -1,10 +1,7 @@
 -- Find the product of the Pythagorean triplet where a + b + c == 1000
 
 import Data.List
-
-pairs :: [a] -> [(a,a)]
-pairs []      = []
-pairs (x:xs)  = [(x,x)] ++ (map (\i -> (x,i)) xs) ++ pairs xs
+import Euler
 
 valRng = [1..999]
 squares = map (\i -> i*i) valRng

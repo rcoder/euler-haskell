@@ -2,16 +2,13 @@
 -- three-digit numbers.
 
 import Data.List
+import Euler
 
 isPalindrome :: Integer -> Bool
 isPalindrome n = (show n) == reverse (show n)
 
 threeDigitNumbers = [100..999]
 desc3DigitNumbers = reverse threeDigitNumbers
-
-pairs :: [a] -> [(a,a)]
-pairs []      = []
-pairs (x:xs)  = [(x,x)] ++ (map (\i -> (x,i)) xs) ++ pairs xs
 
 operands = pairs desc3DigitNumbers
 

@@ -1,8 +1,6 @@
--- Find the 10001 prime
+-- Find prime #10001
 
-primes = 2:filter isPrime [3,5..]
-  where isPrime n = all (not . divides n) $ takeWhile (\i -> i*i <= n) primes
-        divides n p = n `mod` p == 0
+import Euler
 
 result = primes !! 10000
 
