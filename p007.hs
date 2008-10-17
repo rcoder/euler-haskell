@@ -1,6 +1,6 @@
 -- Find prime #10001
 
-import Euler
+import Prime
 
 result = primes !! 10000
 

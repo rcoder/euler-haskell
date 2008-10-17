@@ -4,12 +4,11 @@
 import Euler
 
 mult3or5 :: Integer -> Bool
-mult3or5 i = (divisible i 3) || (divisible i 5)
+mult3or5 i = (divides i 3) || (divides i 5)
 
 values = filter (mult3or5) [1..999]
 total = sum values
 
 main = do
-  -- putStrLn $ "terms: " ++ (show values)
   putStrLn $ "total: " ++ (show total)
 
