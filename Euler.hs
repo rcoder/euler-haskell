@@ -1,4 +1,4 @@
-module Euler ( divides, factors, isPrime, pairs, split ) where
+module Euler ( divides, factors, isPrime, pairs, split, factorial, modexp ) where
 
 divides :: Integer -> Integer -> Bool
 divides i j = i `mod` j == 0
@@ -20,4 +20,14 @@ split str delim = pre : (split post delim)
   where pre     = fst chunks
         post    = snd chunks
         chunks  = break (== delim) str
+
+factorial :: Integer -> Integer
+factorial n = product [1..n]
+
+modexp :: Integer -> Integer -> Integer -> Integer
+modexp _ 0 _ = 1
+modexp n p m = if (odd p) then (modProd t n) else t
+  where modProd i j = (i * j) `mod` m
+        t  = modProd t' t'
+        t' = modexp n (p `div` 2) m
 
