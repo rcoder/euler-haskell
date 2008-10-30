@@ -3,10 +3,14 @@ module Euler ( divides, factors, isPrime, pairs, split, factorial, modexp ) wher
 divides :: Integer -> Integer -> Bool
 divides i j = i `mod` j == 0
 
+factorsUpto :: Integer -> Integer -> [Integer]
+factorsUpto n i = filter (n `divides`) [1..i]
+
+factorsUptoSqrt :: Integer -> [Integer]
+factorsUptoSqrt n = factorsUpto n (floor $ sqrt (fromInteger n))
+
 factors :: Integer -> [Integer]
-factors n = filter (isFactor) [2..limit]
-  where isFactor i = divides n i 
-        limit = floor $ sqrt (fromInteger n)
+factors n = factorsUpto n (n-1)
 
 isPrime :: Integer -> Bool
 isPrime = null . factors
